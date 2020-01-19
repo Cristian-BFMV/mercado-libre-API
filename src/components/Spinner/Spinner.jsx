@@ -1,13 +1,9 @@
 import React from 'react';
 import './Spinner.css';
 const Spinner = () => (
-  <div className="sk-chase">
-    <div className="sk-chase-dot"></div>
-    <div className="sk-chase-dot"></div>
-    <div className="sk-chase-dot"></div>
-    <div className="sk-chase-dot"></div>
-    <div className="sk-chase-dot"></div>
-    <div className="sk-chase-dot"></div>
+  <div class="spinner">
+    <div class="cube1"></div>
+    <div class="cube2"></div>
   </div>
 );
 
