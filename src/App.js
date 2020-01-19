@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar/SearchBar';
-import ItemDetails from './components/ItemDetails/ItemDetails';
 import { Switch, Route } from 'react-router-dom';
+import Spinner from './components/Spinner/Spinner';
+const ItemDetails = lazy(() => import('./components/ItemDetails/ItemDetails'));
 const App = () => {
   return (
     <div className="App">
@@ -11,7 +12,9 @@ const App = () => {
           <SearchBar />
         </Route>
         <Route path="/item/:id">
-          <ItemDetails />
+          <Suspense fallback={<Spinner />}>
+            <ItemDetails />
+          </Suspense>
         </Route>
       </Switch>
     </div>

@@ -12,7 +12,9 @@ const Item = ({ item }) => {
         </div>
       </div>
       <div className="card-body">
-        <h2>{item.title}</h2>
+        <Link to={`item/${item.id}`}>
+          <h2>{item.title}</h2>
+        </Link>
         {item.original_price ? (
           <div className="pricing">
             <p className="original-price">
@@ -28,7 +30,6 @@ const Item = ({ item }) => {
               } `}
             </span>
             <span className="discount">
-              $
               {Math.round(
                 parseInt(100 - (+item.price * 100) / +item.original_price, 10)
               )}
