@@ -1,8 +1,10 @@
 import React from 'react';
 import Item from '../Item/Item';
+import './Items.css';
+
 const Items = ({ info, items }) => {
   return (
-    <div>
+    <div className="items-container">
       {!items.length ? (
         <h1>No items found</h1>
       ) : (

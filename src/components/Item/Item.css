@@ -1,0 +1,40 @@
+.item-container {
+  display: grid;
+  grid-template-columns: 20% repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+    'header body body'
+    'header body body';
+  gap: 2%;
+  background-color: rgba(255, 255, 255, 0.829);
+  border-radius: 1.1rem;
+  margin: 3rem 0;
+  padding: 5rem;
+  box-shadow: 0px 6px 25px 0px rgba(224, 224, 224, 1);
+}
+
+.card-header {
+  grid-area: header;
+}
+
+.item-img > img {
+  width: 7rem;
+}
+
+.card-body {
+  grid-area: body;
+}
+
+.original-price {
+  color: grey;
+  text-decoration: line-through;
+}
+
+.pricing > .discount {
+  color: rgb(83, 194, 73);
+  text-transform: uppercase;
+}
+
+.free-shiping {
+  color: rgb(83, 194, 73);
+}
