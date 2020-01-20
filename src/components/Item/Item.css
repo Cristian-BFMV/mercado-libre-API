@@ -25,21 +25,11 @@
   grid-area: body;
 }
 
-.original-price {
-  color: grey;
-  text-decoration: line-through;
-}
-
-.pricing > .discount {
-  color: rgb(83, 194, 73);
-  text-transform: uppercase;
-}
-
 .free-shiping {
   color: rgb(83, 194, 73);
 }
 
-a{
-    color: black;
-    text-decoration: none;
+a {
+  color: black;
+  text-decoration: none;
 }

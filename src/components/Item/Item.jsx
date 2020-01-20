@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ItemPrice from '../ItemPrice/ItemPrice';
 import './Item.css';
 const Item = ({ item }) => {
   return (
@@ -15,35 +16,11 @@ const Item = ({ item }) => {
         <Link to={`item/${item.id}`}>
           <h2>{item.title}</h2>
         </Link>
-        {item.original_price ? (
-          <div className="pricing">
-            <p className="original-price">
-              $
-              {item.original_price
-                .toFixed(2)
-                .replace(/\d(?=(\d{3})+\.)/g, '$&,')}
-            </p>
-            <span>
-              $
-              {`${item.price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} ${
-                item.currency_id
-              } `}
-            </span>
-            <span className="discount">
-              {Math.round(
-                parseInt(100 - (+item.price * 100) / +item.original_price, 10)
-              )}
-              % off
-            </span>
-          </div>
-        ) : (
-          <p>
-            $
-            {`${item.price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} ${
-              item.currency_id
-            }`}
-          </p>
-        )}
+        <ItemPrice
+          originalPrice={item.original_price}
+          price={item.price}
+          currency_id={item.currency_id}
+        />
         {item.shipping.free_shipping && (
           <p className="free-shiping">Envío gratis</p>
         )}

@@ -5,12 +5,15 @@ const SearchBar = () => {
   const [searchItem, setSearchItem] = useState('');
   const [items, setItems] = useState([]);
   const [info, setInfo] = useState({});
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (event, updaterFunction) => {
     const { value } = event.target;
     updaterFunction(value);
   };
 
   const handleSubmit = async (event, query) => {
+    setLoading(true);
     event.preventDefault();
     if (query !== '') {
       console.log(
@@ -23,6 +26,7 @@ const SearchBar = () => {
       const { results } = result;
       setItems(results);
       setInfo(result);
+      setLoading(false);
     }
   };
   return (
@@ -43,7 +47,7 @@ const SearchBar = () => {
           </button>
         </form>
       </div>
-      <Items info={info} items={items} />
+      <Items info={info} items={items} loading={loading} />
     </div>
   );
 };

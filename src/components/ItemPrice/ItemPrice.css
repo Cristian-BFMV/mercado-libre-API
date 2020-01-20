@@ -1,0 +1,9 @@
+.original-price {
+  color: grey;
+  text-decoration: line-through;
+}
+
+.pricing > .discount {
+  color: rgb(83, 194, 73);
+  text-transform: uppercase;
+}

@@ -1,12 +1,13 @@
 import React from 'react';
 import Item from '../Item/Item';
+import Spinner from '../Spinner/Spinner';
 import './Items.css';
 
-const Items = ({ info, items }) => {
+const Items = ({ info, items, loading }) => {
   return (
     <div className="items-container">
       {!items.length ? (
-        <h1>No items found</h1>
+        <div>{loading ? <Spinner /> : <h1>No items found</h1>}</div>
       ) : (
         <div>
           <h1>Items</h1>
