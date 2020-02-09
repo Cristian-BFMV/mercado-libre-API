@@ -14,6 +14,7 @@ const SearchBar = () => {
 
   const handleSubmit = async (event, query) => {
     setLoading(true);
+    setItems([]);
     event.preventDefault();
     if (query !== '') {
       console.log(
@@ -32,6 +33,9 @@ const SearchBar = () => {
   return (
     <div>
       <div className="container">
+        <div className="brand">
+          <h2>Mercado Cristian</h2>
+        </div>
         <form>
           <input
             type="text"
