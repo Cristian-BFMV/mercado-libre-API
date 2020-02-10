@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Item from '../Item/Item';
 import Spinner from '../Spinner/Spinner';
+import { ItemContext } from '../../provider/ItemsProvider';
 import './Items.css';
 
-const Items = ({ info, items, loading }) => {
+const Items = ({ offset, items, loading }) => {
+  const { loadMore } = useContext(ItemContext);
   return (
     <div className="items-container">
       {!items.length ? (
@@ -16,6 +18,7 @@ const Items = ({ info, items, loading }) => {
               <Item item={item} key={item.id} />
             ))}
           </div>
+          <button onClick={() => loadMore()}>Load more</button>
         </div>
       )}
     </div>

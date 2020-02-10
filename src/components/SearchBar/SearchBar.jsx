@@ -1,33 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './SearchBar.css';
+import { ItemContext } from '../../provider/ItemsProvider';
 import Items from '../Items/Items';
+
 const SearchBar = () => {
   const [searchItem, setSearchItem] = useState('');
-  const [items, setItems] = useState([]);
-  const [info, setInfo] = useState({});
+  // const [info, setInfo] = useState({});
   const [loading, setLoading] = useState(false);
+  const { items, fetchItems } = useContext(ItemContext);
 
   const handleChange = (event, updaterFunction) => {
     const { value } = event.target;
     updaterFunction(value);
   };
 
-  const handleSubmit = async (event, query) => {
-    setLoading(true);
-    setItems([]);
+  const handleSubmit = async event => {
     event.preventDefault();
-    if (query !== '') {
-      console.log(
-        `https://api.mercadolibre.com/sites/MCO/search?q=${query}&offset=50`
-      );
-      const response = await fetch(
-        `https://api.mercadolibre.com/sites/MCO/search?q=${query}&offset=50`
-      );
-      const result = await response.json();
-      const { results } = result;
-      setItems(results);
-      setInfo(result);
-      setLoading(false);
+    setLoading(true);
+    if (searchItem !== '') {
+      fetchItems(searchItem);
     }
   };
   return (
@@ -43,15 +34,12 @@ const SearchBar = () => {
             value={searchItem}
             onChange={event => handleChange(event, setSearchItem)}
           />
-          <button
-            className="search-btn"
-            onClick={event => handleSubmit(event, searchItem)}
-          >
+          <button className="search-btn" onClick={event => handleSubmit(event)}>
             Search
           </button>
         </form>
       </div>
-      <Items info={info} items={items} loading={loading} />
+      <Items offset={handleSubmit} items={items} loading={loading} />
     </div>
   );
 };

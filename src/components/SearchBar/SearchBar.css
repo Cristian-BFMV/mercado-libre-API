@@ -28,8 +28,8 @@ input[type='text']:focus {
   width: 25%;
   font-size: 16px;
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgba(4, 68, 153, 0.788);
-  color: rgba(4, 68, 153, 0.788);
+  border: 1px solid rgb(108, 160, 255);
+  color: rgb(108, 160, 255);
   border-radius: 5rem;
   cursor: pointer;
   font-weight: bold;
@@ -37,7 +37,7 @@ input[type='text']:focus {
 }
 
 .search-btn:hover {
-  background-color: rgba(4, 68, 153, 0.788);
+  background-color: rgb(108, 160, 255);
   color: white;
 }
 
