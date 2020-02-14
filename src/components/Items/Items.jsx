@@ -6,7 +6,7 @@ import './Items.css';
 
 const Items = ({ items, loading }) => {
   const [loadingOffset, setLoadingOffset] = useState(false);
-  const { loadMore } = useContext(ItemContext);
+  const { loadMore, isOffset } = useContext(ItemContext);
   return (
     <div className="items-container">
       {!items.length ? (
@@ -23,7 +23,7 @@ const Items = ({ items, loading }) => {
             {loadingOffset ? (
               <Spinner />
             ) : (
-              <button
+              isOffset && (<button
                 onClick={async () => {
                   setLoadingOffset(true);
                   await loadMore();
@@ -31,8 +31,8 @@ const Items = ({ items, loading }) => {
                 }}
                 className="load-more"
               >
-                Load more
-              </button>
+                Cargar más
+              </button>)
             )}
           </div>
         </div>

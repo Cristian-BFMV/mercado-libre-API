@@ -7,35 +7,42 @@ class ItemProvider extends React.Component {
     offset: 1,
     endPoint: 'https://api.mercadolibre.com/sites/MCO/search?q=',
     items: [],
-    query: ''
+    query: '',
+    isOffset: true
   };
 
   fetchItems = async query => {
     this.setState({ items: [], query, offset: 1 });
     const { endPoint } = this.state;
     const response = await (await fetch(`${endPoint}${query}`)).json();
+    console.log(response)
     const { results } = response;
     this.setState({ items: results });
   };
 
   loadMore = async () => {
     const { endPoint, query, offset } = this.state;
-    const response = await (
-      await fetch(`${endPoint}${query}&offset=${50 * offset}`)
-    ).json();
-    const { results } = response;
-    this.setState(prevState => {
-      const { items, offset } = prevState;
-      return { items: items.concat(results), offset: offset + 1 };
-    });
+    if((offset+1)*50 < 1000){
+      const response = await (
+        await fetch(`${endPoint}${query}&offset=${50 * offset}`)
+      ).json();
+      const { results } = response;
+      this.setState(prevState => {
+        const { items, offset } = prevState;
+        return { items: items.concat(results), offset: offset + 1 };
+      });
+    }else{
+      this.setState({isOffset: false});
+    }
+    
   };
   render() {
     const fetchItems = this.fetchItems;
     const loadMore = this.loadMore;
     const { children } = this.props;
-    const { items } = this.state;
+    const { items, isOffset } = this.state;
     return (
-      <ItemContext.Provider value={{ items, fetchItems, loadMore }}>
+      <ItemContext.Provider value={{ items, fetchItems, loadMore, isOffset }}>
         {children}
       </ItemContext.Provider>
     );
