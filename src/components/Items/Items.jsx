@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Item from '../Item/Item';
 import Spinner from '../Spinner/Spinner';
 import { ItemContext } from '../../provider/ItemsProvider';
 import './Items.css';
 
-const Items = ({ offset, items, loading }) => {
+const Items = ({ items, loading }) => {
+  const [loadingOffset, setLoadingOffset] = useState(false);
   const { loadMore } = useContext(ItemContext);
   return (
     <div className="items-container">
@@ -18,7 +19,22 @@ const Items = ({ offset, items, loading }) => {
               <Item item={item} key={item.id} />
             ))}
           </div>
-          <button onClick={() => loadMore()}>Load more</button>
+          <div className="offset-container">
+            {loadingOffset ? (
+              <Spinner />
+            ) : (
+              <button
+                onClick={async () => {
+                  setLoadingOffset(true);
+                  await loadMore();
+                  setLoadingOffset(false);
+                }}
+                className="load-more"
+              >
+                Load more
+              </button>
+            )}
+          </div>
         </div>
       )}
     </div>

@@ -22,7 +22,7 @@ const SearchBar = () => {
     }
   };
   return (
-    <div>
+    <div id="search-bar">
       <div className="container">
         <div className="brand">
           <h2>Mercado Cristian</h2>
@@ -39,7 +39,7 @@ const SearchBar = () => {
           </button>
         </form>
       </div>
-      <Items offset={handleSubmit} items={items} loading={loading} />
+      <Items items={items} loading={loading} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 import ItemPrice from '../ItemPrice/ItemPrice';
 import './ItemDetails.css';
@@ -27,6 +27,9 @@ const ItemDetails = () => {
         <Spinner />
       ) : (
         <div className="item-details-container">
+          <div className="item-details-routing">
+            <Link to="/">Atras</Link>
+          </div>
           <div className="item-details-header">
             <img src={item.pictures[0].secure_url} alt="" />
           </div>

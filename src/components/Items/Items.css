@@ -3,3 +3,32 @@
   display: flex;
   justify-content: center;
 }
+
+.offset-container {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem;
+}
+
+.load-more {
+  padding: 0.5rem 0;
+  text-align: center;
+  width: 25%;
+  font-size: 16px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(108, 160, 255);
+  color: rgb(108, 160, 255);
+  border-radius: 5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.load-more:hover {
+  background-color: rgb(108, 160, 255);
+  color: white;
+}
+
+.load-more:active {
+  opacity: 0.5;
+}

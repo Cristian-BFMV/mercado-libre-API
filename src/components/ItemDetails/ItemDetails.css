@@ -1,15 +1,24 @@
 .item-details-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(4, auto);
   grid-template-areas:
+    'route route'
     'header body'
     'header body'
     'footer footer';
   width: 80%;
   margin: 5% 10%;
 }
+.item-details-routing {
+  grid-area: route;
+}
 
+.item-details-routing > a {
+  font-size: 24px;
+  text-decoration: underline;
+  color: rgb(108, 160, 255);
+}
 .item-details-header {
   grid-area: header;
 }
