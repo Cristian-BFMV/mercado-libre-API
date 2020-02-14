@@ -33,3 +33,22 @@ a {
   color: black;
   text-decoration: none;
 }
+
+@media screen and (min-width:621px) and (max-width: 1026px){
+  .item-container{
+    margin: 1.5rem 3rem;
+  }
+}
+
+@media screen and (max-width:620px) {
+  .item-container{
+    grid-template-areas: "header header header"
+    "body body body";
+    margin: 1.5rem 2rem;
+  }
+
+  .item-img{
+    display: flex;
+    justify-content: center;
+  }
+}

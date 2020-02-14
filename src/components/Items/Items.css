@@ -32,3 +32,9 @@
 .load-more:active {
   opacity: 0.5;
 }
+
+@media only screen and (max-width: 472px){
+  .load-more{
+    width: 40%;
+  }
+}

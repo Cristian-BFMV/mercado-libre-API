@@ -1,8 +1,9 @@
 .container {
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
-  height: 10vh;
+  min-height: 10vh;
   border-bottom: 1px solid rgba(128, 128, 128, 0.5);
 }
 form {
@@ -43,4 +44,23 @@ input[type='text']:focus {
 
 .search-btn:active {
   opacity: 0.5;
+}
+
+@media only screen and (max-width: 900px){
+  .container{
+    display: flex;
+    flex-flow: column wrap;
+    
+  }
+
+  .brand{
+    margin: .5rem;
+  }
+
+  form{
+    margin: .5rem;
+  }
+
+  
+ 
 }

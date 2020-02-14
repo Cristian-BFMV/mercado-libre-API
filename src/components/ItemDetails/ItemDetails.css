@@ -40,3 +40,24 @@
   flex: 0 0 25%;
   margin: 2.5%;
 }
+
+@media only screen and (max-width: 800px) {
+  .item-details-container{
+    grid-template-columns: 1fr;
+    grid-template-areas: "route"
+    "header"
+    "body"
+    "footer";
+  }
+
+  .item-info > div{
+    flex: 0 0 40%;
+  }
+}
+
+
+@media only screen and (max-width: 592px){
+  .item-details-header > img{
+    width: 80%;
+  }
+}

@@ -8,7 +8,8 @@ class ItemProvider extends React.Component {
     endPoint: 'https://api.mercadolibre.com/sites/MCO/search?q=',
     items: [],
     query: '',
-    isOffset: true
+    isOffset: true,
+    primaryResults: 0
   };
 
   fetchItems = async query => {
@@ -17,12 +18,12 @@ class ItemProvider extends React.Component {
     const response = await (await fetch(`${endPoint}${query}`)).json();
     console.log(response)
     const { results } = response;
-    this.setState({ items: results });
+    this.setState({ items: results, primaryResults: response.paging.primary_results });
   };
 
   loadMore = async () => {
-    const { endPoint, query, offset } = this.state;
-    if((offset+1)*50 < 1000){
+    const { endPoint, query, offset,primaryResults } = this.state;
+    
       const response = await (
         await fetch(`${endPoint}${query}&offset=${50 * offset}`)
       ).json();
@@ -31,9 +32,8 @@ class ItemProvider extends React.Component {
         const { items, offset } = prevState;
         return { items: items.concat(results), offset: offset + 1 };
       });
-    }else{
-      this.setState({isOffset: false});
-    }
+    
+      this.setState({isOffset: (offset+1)*50 < primaryResults ? true : false});
     
   };
   render() {
