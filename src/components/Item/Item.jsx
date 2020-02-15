@@ -24,6 +24,7 @@ const Item = ({ item }) => {
         {item.shipping.free_shipping && (
           <p className="free-shiping">Envío gratis</p>
         )}
+        Vendedor: {item.seller.id}
       </div>
     </div>
   );
