@@ -40,7 +40,7 @@ const Item = ({ item }) => {
         {item.shipping.free_shipping && (
           <p className="free-shiping">Envío gratis</p>
         )}
-        {!loadingSeller && <p>{sellerName}</p>}
+        {!loadingSeller && <p>Vendedor: {sellerName}</p>}
       </div>
     </div>
   );
